@@ -24,8 +24,11 @@ RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
   unzip terraform*.zip && \
   rm terraform*.zip
 
-# TODO: unprivileged user
-# USER
+RUN adduser -D terraform
+
+WORKDIR /home/terraform
+
+USER terraform
 
 CMD []
 HEALTHCHECK NONE
